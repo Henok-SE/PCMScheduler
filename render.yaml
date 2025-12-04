@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: fellowship-bot
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: 8298711138:AAErULzaqIoRcZ_rdGkakQ8xjJBZ6hVrX1Q
+        sync: false
