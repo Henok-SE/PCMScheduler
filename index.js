@@ -1,6 +1,19 @@
 // index.js - PCM FELLOWSHIP SCHEDULER BOT (FINAL & 100% WORKING)
 // ENHANCED: Added complete member management with delete/edit features
 
+//  top of index.js, add a simple HTTP server for Render.com
+const http = require('http');
+const server = http.createServer((req, res) => {
+  res.writeHead(200);
+  res.end('Bot is running');
+});
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`✅ Server listening on port ${PORT} (for Render)`);
+});
+
+
 require("dotenv").config();
 const { Telegraf, session, Markup } = require("telegraf");
 const { CronJob } = require("cron");
