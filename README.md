@@ -1,77 +1,105 @@
-# PCM Fellowship Scheduler Bot
+# ✝️ PCM Fellowship Scheduler Bot
 
-A powerful Telegram bot for managing your fellowship’s members and weekly program schedules, featuring registration, attendance tracking, automated reminders, and full admin controls.
-
----
-
-## ✨ Features
-
-- **Member Registration & Management**
-  - Self-registration with talent/role selection (multiple allowed)
-  - Phone number collection, active/inactive toggle, and live member editing (admin only)
-  - Member deletion and detailed member view (admin only)
-- **Schedule Generation**
-  - Automatic and regenerable 4-week service schedule with smart role assignment
-  - Personalized views: this week's schedule, monthly program, and individual roles
-- **Automated Reminders**
-  - Weekly reminders sent every Wednesday at 8 AM (Africa/Addis_Ababa timezone)
-  - “Force Reminder” for immediate broadcast (admin only)
-- **Admin Control Panel**
-  - Add/edit/delete members, regenerate schedule, broadcast announcements, and view statistics
-  - Export all data to JSON, clear schedules or entire database, and view detailed stats
-- **Database**
-  - Uses a persistent, auto-managed SQLite database (data/fellowship.db)
-  - Data is auto-created and upgraded on startup (no manual migration needed)
-- **Render.com Optimized**
-  - Simple HTTP server included for Render.com healthchecks
+A feature-rich **Telegram bot** for easy fellowship ministry scheduling, member management, and reminders — built with a modern tech stack and a focus on simplicity for users and admins alike.
 
 ---
 
-## 🚀 Quick Start
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Henok-SE/PCMScheduler.git
-   cd PCMScheduler
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Setup environment variables**
-   - Copy `.env.example` to `.env` (You must create this file yourself!):
-     ```
-     BOT_TOKEN=YOUR_TELEGRAM_BOT_TOKEN
-     ADMIN_ID=YOUR_TELEGRAM_NUMERIC_ID
-     PORT=3000              # For Render.com or default local (optional)
-     ```
-   - Obtain your Telegram Bot token from [@BotFather](https://t.me/BotFather).
-   - Your Telegram numeric ID for ADMIN access (find with @userinfobot).
-
-4. **Run the bot locally**
-   ```bash
-   node index.js
-   ```
-   The bot will now be online and running! For production, deploy using [Render.com](https://render.com/) or another Node.js-friendly host.
+<p align="center">
+  <img src="https://img.shields.io/github/languages/top/Henok-SE/PCMScheduler?style=for-the-badge"/>
+  <img src="https://img.shields.io/github/license/Henok-SE/PCMScheduler?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Platform-Telegram-blue?style=for-the-badge"/>
+</p>
 
 ---
 
-## ⚙️ Deployment (Render.com Example)
+## 🚀 Features
 
-- The bot includes a basic HTTP landing page to comply with Render’s “Web Service” model.
-- Make sure your [`render.yaml`](render.yaml) is valid for easiest deployment.
-- The SQLite database is written to `data/fellowship.db` by default. Add a “Persistent Disk” pointing to `/data` for database durability.
+- **🙋 Member Registration & Management**
+  - Self-registration with multiple talents (roles)
+  - Edit member info, add phone number, activate/deactivate, and delete (admin only)
+  - View detailed member info
+
+- **📅 Program Schedule Generation**
+  - Automatic 4-week rolling schedule assignment based on roles/talents
+  - Handy displays: “My Schedule,” “This Week,” and “Monthly” overviews
+
+- **🔔 Scheduling Reminders**
+  - Weekly reminders sent every Wednesday 8AM (Africa/Addis_Ababa timezone)
+  - Force reminder broadcast (admin only)
+
+- **🛡 Admin Control Panel**
+  - Easily manage members and schedules via Telegram
+  - Regenerate schedule, send announcements, export data, and advanced stats
+  - Export/backup and database clearing tools
+
+- **💾 Database**
+  - Persistent, auto-managed SQLite database in `/data/fellowship.db`
+
+- **🌐 Render.com & Cloud-Ready**
+  - Lightweight HTTP server for cloud provider compatibility (e.g., Render.com)
+  - Configuration YAML for auto-deploy
 
 ---
 
-## 📂 Repository Structure
+## 🛠️ Tech Stack
+
+<p>
+  <img alt="Node.js" src="https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white&style=for-the-badge"/>
+  <img alt="Telegraf" src="https://img.shields.io/badge/Telegraf-4EA94B?logo=telegram&logoColor=white&style=for-the-badge"/>
+  <img alt="SQLite" src="https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white&style=for-the-badge"/>
+  <img alt="Render" src="https://img.shields.io/badge/Render-46E3B7?logo=render&logoColor=black&style=for-the-badge"/>
+  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black&style=for-the-badge"/>
+</p>
+
+- **Node.js** — Lightning-fast JavaScript runtime for scalable bots
+- **Telegraf** — Robust Telegram bot API framework
+- **Better-SQLite3** — High-performance SQLite storage
+- **node-cron** — Flexible and reliable job scheduling
+
+---
+
+## ⚡ Quick Start
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Henok-SE/PCMScheduler.git
+cd PCMScheduler
+
+# 2. Install dependencies
+npm install
+
+# 3. Set up environment variables
+cp .env.example .env   # Or create .env manually
+# Fill in:
+# BOT_TOKEN=<Your Telegram Bot Token>
+# ADMIN_ID=<Your Telegram numeric ID>
+# PORT=3000            # Optional (for Render.com or your host)
+```
+- Get your BOT_TOKEN from [@BotFather](https://t.me/BotFather)
+- Get your Telegram numeric ID (for admin) from [@userinfobot](https://t.me/userinfobot)
+
+```bash
+# 4. Start the bot:
+node index.js
+# (Or deploy to Render.com for 24/7 operation)
+```
+
+---
+
+## 🌍 Deployment
+
+- **Render.com**: Handles HTTP landing for health checks out-of-the-box. [render.yaml](./render.yaml) is included.
+- Use a **Persistent Disk** pointed at `/data` to keep your SQLite database safe.
+- Environment variables are managed in the Render.com dashboard.
+
+---
+
+## 🗂️ Project Structure
 
 ```
-├── index.js           # Main bot source code (all bot logic here)
-├── package.json       # Node.js dependencies and scripts
-├── render.yaml        # (Optional) Render.com deployment config
+├── index.js           # Main bot logic
+├── package.json       # NPM scripts and dependencies
+├── render.yaml        # Deployment config for Render.com
 ├── data/
 │   └── fellowship.db  # SQLite database (auto-created)
 ├── .gitignore
@@ -80,39 +108,34 @@ A powerful Telegram bot for managing your fellowship’s members and weekly prog
 
 ---
 
-## 🛠 Technologies Used
+## 📝 Key Bot Commands & Menu
 
-- **Node.js** – main runtime
-- **Telegraf** – Telegram Bot framework ([npm](https://www.npmjs.com/package/telegraf))
-- **Better-SQLite3** – fast, persistent local database
-- **node-cron** – scheduled background reminders
-
----
-
-## 📝 Usage Overview
-
-- **/start** – Kick off registration (select name/roles)
-- **Main Menu Buttons:** Register, This Week, Monthly Schedule, My Schedule, Help (and “Admin” for privileged users)
-- **Admin Panel:** View/manage members, regenerate schedule, Force/Automated reminders, announcements, statistics, export, and settings
+- **/start** – Welcome and register
+- **Main Menu** — Register, This Week, My Schedule, Monthly Schedule, Help (Admin panel button for admins)
+- **Admin Panel** — Manage members, regenerate schedules, send reminders/announcements, view stats, export, and settings
 
 ---
 
-## 🛡 Security/Backup
+## 🛡️ Security & Backup
 
-- **Database:** All user and schedule data stored in `data/fellowship.db`
-- **Export:** Admin can export all data to JSON from the control panel
-- **Database management:** Admin can clear/restore the database from in-bot commands
-
----
-
-## 🤝 Contributions
-
-Contributions welcome! Please open issues or submit pull requests for new features, improvements, or bug fixes.
+- All sensitive data stored in `/data/fellowship.db` (never tracked in git)
+- Admin: Export all data as JSON and manage the db from your Telegram panel
+- Reset/Clear options are protected — only for ADMIN_ID
 
 ---
 
-## 🙏 Credit
+## 🤝 Contributing
 
-Built by [Henok-SE](https://github.com/Henok-SE) for PCM Fellowship management.
+Pull requests and issues welcome! Suggest or add new features, localizations, or improvements.
 
-*To God be the glory!*
+---
+
+## 🙏 About
+
+Created by [Henok-SE](https://github.com/Henok-SE) for community and church fellowship management.
+
+> *To God be all the glory!*
+
+---
+
+<p align="center"><b>Made with ❤️ & faith to help your fellowship flourish!</b></p>
