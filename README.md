@@ -4,11 +4,7 @@ A feature-rich **Telegram bot** for easy fellowship ministry scheduling, member 
 
 ---
 
-<p align="center">
-  <img src="https://img.shields.io/github/languages/top/Henok-SE/PCMScheduler?style=for-the-badge"/>
-  <img src="https://img.shields.io/github/license/Henok-SE/PCMScheduler?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Platform-Telegram-blue?style=for-the-badge"/>
-</p>
+
 
 ---
 
